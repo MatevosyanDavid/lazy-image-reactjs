@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const useMount = effect => useEffect(effect, []);
 
-const LazyImage = ({ src, alt, ...restProps }) => {
+const LazyImage = ({ src, alt, options, ...restProps }) => {
   const [imageSrc, setImageSrc] = useState(null);
 
   const ref = useRef(null);
@@ -19,10 +19,7 @@ const LazyImage = ({ src, alt, ...restProps }) => {
               }
             });
           },
-          {
-            threshold: 0.01,
-            rootMargin: '75%',
-          },
+          options,
         );
         observer.observe(ref.current);
         return () => {
@@ -33,6 +30,13 @@ const LazyImage = ({ src, alt, ...restProps }) => {
       }
     }
   });
+
+  LazyImage.defaultProps = {
+    options: {
+      threshold: 0.01,
+      rootMargin: '75%',
+    }
+  }
 
   return React.createElement("img", {
     ref: ref,
