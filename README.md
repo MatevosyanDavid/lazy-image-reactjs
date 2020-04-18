@@ -13,4 +13,4 @@ This package created for the lazy loading images
 - Implementing "infinite scrolling" web sites, where more and more content is loaded and rendered as you scroll, so that the user doesn't have to flip through pages.
 - Deciding whether or not to perform tasks or animation processes based on whether or not the user will see the result.
 
-You can play with it in [sandbox](https://codesandbox.io/)
+You can play with it in [sandbox](https://codesandbox.io/s/fragrant-paper-2bwoy?file=/src/App.js)
