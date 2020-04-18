@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const useMount = effect => useEffect(effect, []);
 
@@ -31,19 +32,26 @@ const LazyImage = ({ src, alt, options, ...restProps }) => {
     }
   });
 
-  LazyImage.defaultProps = {
-    options: {
-      threshold: 0.01,
-      rootMargin: '75%',
-    }
-  }
-
   return React.createElement("img", {
     ref: ref,
     alt: alt,
     src: imageSrc,
     ...restProps,
   });
+};
+
+LazyImage.defaultProps = {
+  options: {
+    threshold: 0.01,
+    rootMargin: '75%',
+  },
+  alt: '',
+};
+
+LazyImage.propTypes = {
+  alt: PropTypes.string,
+  options: PropTypes.object,
+  src: PropTypes.string.isRequired,
 };
 
 export default LazyImage;
