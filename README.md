@@ -12,6 +12,7 @@ This package created for the lazy loading images
 - Lazy-loading of images or other content as a page is scrolled.
 - Implementing "infinite scrolling" web sites, where more and more content is loaded and rendered as you scroll, so that the user doesn't have to flip through pages.
 - Deciding whether or not to perform tasks or animation processes based on whether or not the user will see the result.
+- `dataSrc` attribute allows you to display a placeholder image before displaying a real image
 
 ```js
 import LazyImage from 'lazy-image-reactjs';
@@ -28,6 +29,7 @@ function App() {
       <LazyImage
         alt="alt"
         src="image.jpg"
+        dataSrc="alt.img"
         options={options}
       />
     </div>

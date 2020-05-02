@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const useMount = effect => useEffect(effect, []);
 
-const LazyImage = ({ src, alt, options, ...restProps }) => {
-  const [imageSrc, setImageSrc] = useState(null);
+const LazyImage = ({ src, alt, dataSrc, options, ...restProps }) => {
+  const [imageSrc, setImageSrc] = useState(dataSrc || null);
 
   const ref = useRef(null);
 
