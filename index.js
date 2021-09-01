@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const useMount = effect => useEffect(effect, []);
 
-const LazyImage = ({ src, alt, dataSrc, options, ...restProps }) => {
+const LazyImage = ({ src, alt = '', dataSrc, options, ...restProps }) => {
   const [imageSrc, setImageSrc] = useState(dataSrc || null);
 
   const ref = useRef(null);
@@ -20,7 +20,11 @@ const LazyImage = ({ src, alt, dataSrc, options, ...restProps }) => {
               }
             });
           },
-          options,
+          {
+            threshold: 0.01,
+            rootMargin: '75%',
+            ...options,
+          },
         );
         observer.observe(ref.current);
         return () => {
@@ -32,20 +36,12 @@ const LazyImage = ({ src, alt, dataSrc, options, ...restProps }) => {
     }
   });
 
-  return React.createElement("img", {
+  return React.createElement('img', {
     ref: ref,
     alt: alt,
     src: imageSrc,
     ...restProps,
   });
-};
-
-LazyImage.defaultProps = {
-  options: {
-    threshold: 0.01,
-    rootMargin: '75%',
-  },
-  alt: '',
 };
 
 LazyImage.propTypes = {
